@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleMovement : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
+
+    public static float gameSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -14,6 +16,6 @@ public class ObstacleMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = transform.position + new Vector3(0, -GameManager.gameSpeed * Time.deltaTime);
+        
     }
 }

@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 1511395667844306439}
   - component: {fileID: 1074925443355083427}
   - component: {fileID: 327679842414684627}
-  - component: {fileID: 829552108}
+  - component: {fileID: 3398157086687743897}
   m_Layer: 8
   m_Name: New Sprite (1)
   m_TagString: Untagged
@@ -306,7 +306,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.55, y: 2.56}
   m_EdgeRadius: 0
---- !u!50 &829552108
+--- !u!50 &3398157086687743897
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
