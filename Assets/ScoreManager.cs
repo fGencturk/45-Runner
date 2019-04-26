@@ -16,21 +16,17 @@ public class ScoreManager : MonoBehaviour
     }
 
 
-    public static void GetScore(bool isPerfect)
+    public static void GetScore()
     {
-        int s = 1;
-        if (isPerfect)
-        {
-            s = 2;
-            perfectCount++;
-        }
-        else
-        {
-            perfectCount = 1;
-        }
-        score += s * perfectCount;
+        score += perfectCount;
+        perfectCount++;
         scoreUI.UpdateScores();
-        GameObject.FindGameObjectWithTag("Player").GetComponent<ParticleColorManager>().ChangeParticleSettings();
+    }
+
+    public static void ResetMultiplier()
+    {
+        perfectCount = 1;
+        scoreUI.UpdateScores();
     }
 
 }

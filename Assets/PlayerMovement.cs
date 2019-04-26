@@ -5,11 +5,13 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float speed = 3f;
+    private float speed = 3f;
     private int moveDirection = 1; //1 for right, -1 for left
+    public bool canMove = true;
 
     void Start()
     {
+        
     }
 
     // Update is called once per frame
@@ -17,7 +19,8 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 moveFactor = new Vector3(speed * moveDirection * Time.deltaTime, 0);
         transform.position = transform.position + moveFactor;
-        if(Input.GetKeyDown(KeyCode.Space))
+
+        if (Input.GetKeyDown(KeyCode.Space) && canMove)
         {
             ChangeMoveDirection();
         }
@@ -33,4 +36,9 @@ public class PlayerMovement : MonoBehaviour
         moveDirection *= -1;
     }
     
+    public void SetSpeed(float speed)
+    {
+        this.speed = speed;
+    }
+
 }

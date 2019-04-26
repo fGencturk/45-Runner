@@ -224,6 +224,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &477210808 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9213213712858407255, guid: eb20976ce48b01448a9411e6bd6d1efe,
+    type: 3}
+  m_PrefabInstance: {fileID: 1343660912124982620}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf9a94ec8b5ba5d409b246d32852e5d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,7 +971,7 @@ GameObject:
   - component: {fileID: 1949015296}
   m_Layer: 0
   m_Name: ObstacleGenerator
-  m_TagString: Untagged
+  m_TagString: ObstacleGenerator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -981,6 +993,9 @@ MonoBehaviour:
     type: 3}
   minDistanceObs: 3
   maxDistanceObs: 3
+  initialSpeed: 3
+  player: {fileID: 477210808}
+  background: {fileID: 1319687900}
 --- !u!4 &1949015297
 Transform:
   m_ObjectHideFlags: 0
@@ -1276,6 +1291,11 @@ PrefabInstance:
         type: 3}
       propertyPath: colors.Array.data[9].g
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9213213712858407255, guid: eb20976ce48b01448a9411e6bd6d1efe,
+        type: 3}
+      propertyPath: speed
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb20976ce48b01448a9411e6bd6d1efe, type: 3}

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WorldLimit : MonoBehaviour
 {
+    PlayerMovement player;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,16 @@ public class WorldLimit : MonoBehaviour
     {
         if (collision.transform.tag == "Player")
         {
-            collision.transform.gameObject.GetComponent<PlayerMovement>().ChangeMoveDirection();
+            player = collision.transform.gameObject.GetComponent<PlayerMovement>();
+            player.canMove = false;
+            player.ChangeMoveDirection();
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Player")
+        {
+            player.canMove = true;
         }
     }
 }

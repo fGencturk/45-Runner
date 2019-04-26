@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class ObstacleGenerator : MonoBehaviour
 {
-    //the multipler that makes the next obstacle created at edges
-    [SerializeField] int edgeLuckMultiplier = 2;
     [SerializeField] GameObject obstacle;
-    [SerializeField] float minDistanceObs = 2f;
-    [SerializeField] float maxDistanceObs = 5f;
+    [SerializeField] float minDistanceObs = 3f;
+    [SerializeField] float maxDistanceObs = 3f;
+    [SerializeField] float initialSpeed = 3f;
+    public AnimationCurve curve;
     private float lastObstaclePosX;
+
+    [SerializeField] PlayerMovement player;
+    [SerializeField] BackgroundScroll background;
+
+    private float distanceDecreaseFactor;
+
     public static float speed;
     private float screenX,
         screenY,
@@ -18,19 +24,23 @@ public class ObstacleGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().speed;
-        Invoke("GenerateObstacle", 1);
+        distanceDecreaseFactor = 0.3f;
+        SetSpeed(initialSpeed);
         Vector3 worldLimit = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
         screenX = worldLimit.x;
         xLimit = screenX * 0.6f;
         screenY = worldLimit.y;
+
+
+        EndlessGame();
+        Invoke("GenerateObstacle", 1);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
+
 
     void GenerateObstacle()
     {
@@ -43,19 +53,66 @@ public class ObstacleGenerator : MonoBehaviour
             direction = 1;
         else
             direction = Random.Range(0, 2) * 2 - 1;
-        xRandom = Mathf.Pow(Random.Range(0, Mathf.Pow(yRandom, edgeLuckMultiplier)), 1.0f / edgeLuckMultiplier) * direction;
+        //xRandom = Mathf.Pow(Random.Range(0, Mathf.Pow(yRandom, edgeLuckMultiplier)), 1.0f / edgeLuckMultiplier) * direction;
+        xRandom = yRandom * direction;
 
         float xValue = Mathf.Clamp(lastObstaclePosX + xRandom, -screenX, screenX);
         lastObstaclePosX = xValue;
         Instantiate(obstacle, new Vector2(xValue, yRandom + screenY * 2 + 1), Quaternion.identity);
 
-        Invoke("GenerateObstacle", yRandom / speed);
-        
+        Invoke("GenerateObstacle", yRandom / speed);        
     }
 
 
-    public static void SetSpeed(float s)
+    public void SetSpeed(float s)
     {
         speed = s;
+        player.SetSpeed(s);
+        background.SetSpeed(s);
     }
+
+
+
+    void EndlessGame()
+    {
+        Invoke("DecreaseSpeed", 10f);
+        Invoke("DecreaseMinDistanceObs", 10f);
+        Invoke("DecreaseMaxDistanceObs", 60f);
+
+    }
+
+    void DecreaseSpeed()
+    {
+        if (speed + 0.1f >= 4.5f)
+        {
+            speed = 4.5f;
+            return;
+        }
+        SetSpeed(speed + 0.1f);
+        Invoke("DecreaseSpeed", 10f);
+    }
+
+    void DecreaseMinDistanceObs()
+    {
+        if (minDistanceObs - distanceDecreaseFactor <= 0.5f)
+        {
+            minDistanceObs = 0.5f;
+            return;
+        }
+        minDistanceObs = minDistanceObs - distanceDecreaseFactor;
+        Invoke("DecreaseMinDistanceObs", 10f);
+    }
+
+    void DecreaseMaxDistanceObs()
+    {
+        if (maxDistanceObs - distanceDecreaseFactor <= 1.5f)
+        {
+            maxDistanceObs = 1.5f;
+            return;
+        }
+        maxDistanceObs = maxDistanceObs - distanceDecreaseFactor;
+        Invoke("DecreaseMaxDistanceObs", 10f);
+    }
+
+
 }

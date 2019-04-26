@@ -11,7 +11,6 @@ public class BackgroundScroll : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().speed;
         yFactor = transform.localScale.y;
     }
 
