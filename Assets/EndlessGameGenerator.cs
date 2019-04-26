@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleGenerator : MonoBehaviour
+public class EndlessGameGenerator : MonoBehaviour
 {
     [SerializeField] GameObject obstacle;
     [SerializeField] AnimationCurve minDistanceObsCurve;

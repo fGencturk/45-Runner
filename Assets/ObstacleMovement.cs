@@ -4,14 +4,6 @@ using UnityEngine;
 
 public class ObstacleMovement : MonoBehaviour
 {
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         transform.position = transform.position + new Vector3(0, -GameManager.gameSpeed * Time.deltaTime);

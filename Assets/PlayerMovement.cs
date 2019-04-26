@@ -7,11 +7,6 @@ public class PlayerMovement : MonoBehaviour
     private int moveDirection = 1; //1 for right, -1 for left
     public bool canMove = true;
 
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -26,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
+        //TODO die
     }
 
     public void ChangeMoveDirection()

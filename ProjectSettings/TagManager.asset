@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ScoreUIManager
   - ObstacleGenerator
+  - LevelGenerator
   layers:
   - Default
   - TransparentFX

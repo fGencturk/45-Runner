@@ -117,5 +117,3 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  player: {fileID: 0}
-  background: {fileID: 0}
