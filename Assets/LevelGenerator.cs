@@ -10,7 +10,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] AnimationCurve obstacleDistanceCurve;
     [SerializeField] AnimationCurve speedCurve;
     [SerializeField] int initialObstacleCount = 10;
-    //TODO get level from bin file
+    [SerializeField] LevelUIManager levelUI;
     public int level = 1;
 
     private float screenX,
@@ -20,7 +20,6 @@ public class LevelGenerator : MonoBehaviour
     private float lastObstaclePosX = 0;
     private float obstacleDistance;
 
-    private LevelUIManager levelUI;
 
     void Start()
     {
@@ -28,14 +27,22 @@ public class LevelGenerator : MonoBehaviour
         screenX = worldLimit.x;
         xLimit = screenX * 0.6f;
         screenY = worldLimit.y;
+        
+        level = Player.data.maxLevel;
 
         GameManager.gameSpeed = speedCurve.Evaluate(Time.time / 60f);
-        Invoke("GenerateLevel", 1);
+        GenerateLevel();
 
-        levelUI = GetComponent<LevelUIManager>();
     }
 
-    public void GenerateLevel()
+    public void NextLevel()
+    {
+        level++;
+        Player.data.maxLevel++;
+        GenerateLevel();
+    }
+
+    void GenerateLevel()
     {
         levelUI.UpdateLevel(level);
 

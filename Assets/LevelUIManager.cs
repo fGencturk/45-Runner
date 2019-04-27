@@ -1,24 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LevelUIManager : MonoBehaviour
 {
-    [SerializeField] Text level;
+    [SerializeField] TextMeshProUGUI activeLevelText;
+    [SerializeField] TextMeshProUGUI gameOverLevelText;
     [SerializeField] float effectDuration = 2f;
 
     private float startTime;
     private float maxScale = 2;
     public void UpdateLevel(int i)
     {
-        level.text = "Level " + i;
+        activeLevelText.text = "Level " + i;
+        gameOverLevelText.text = "Level " + i;
         StartCoroutine(UIEffect());
     }
 
     IEnumerator UIEffect()
     {
-        Transform levelObj = level.gameObject.transform;
+        Transform levelObj = activeLevelText.gameObject.transform;
         startTime = Time.time;
 
         Vector3 initialScale = levelObj.localScale;

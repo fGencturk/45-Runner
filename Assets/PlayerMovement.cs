@@ -21,7 +21,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //TODO die
+        if(collision.transform.tag == "Obstacle")
+        {
+            GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().EndGame();
+            Destroy(this.gameObject);
+
+        }
     }
 
     public void ChangeMoveDirection()

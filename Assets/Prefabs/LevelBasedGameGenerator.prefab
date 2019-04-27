@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2234314788722683088}
   - component: {fileID: 2234314788722683089}
-  - component: {fileID: 482258618}
   m_Layer: 0
   m_Name: LevelBasedGameGenerator
   m_TagString: LevelGenerator
@@ -45,6 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacle: {fileID: 7870830064523004677, guid: e7dc494125bd5254ba153eca9c5dc511,
+    type: 3}
+  nextLevel: {fileID: 3423733329786990143, guid: 32d96839dd1933041ba7ac717064a8e2,
     type: 3}
   obstacleDistanceCurve:
     serializedVersion: 2
@@ -95,18 +96,5 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   initialObstacleCount: 10
-  level: 10
---- !u!114 &482258618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2234314788722683102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eeeebcdb9f08fda42a3028b86eac11ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  level: {fileID: 0}
-  effectDuration: 2
+  levelUI: {fileID: 0}
+  level: 1

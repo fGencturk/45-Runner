@@ -29,4 +29,15 @@ public class ScoreManager : MonoBehaviour
         scoreUI.UpdateScores();
     }
 
+    public static void Reset()
+    {
+        score = 0;
+        perfectCount = 1;
+        scoreUI.UpdateScores();
+    }
+
+    public static void UpdateEndScreen()
+    {
+        scoreUI.UpdateEndScore();
+    }
 }
