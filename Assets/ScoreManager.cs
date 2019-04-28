@@ -7,12 +7,10 @@ public class ScoreManager : MonoBehaviour
     public static int score = 0;
     public static int perfectCount = 0;
     private static ScoreUIManager scoreUI;
-    private static ParticleColorManager particle;
 
     private void Start()
     {
         scoreUI = GameObject.FindGameObjectWithTag("ScoreUIManager").GetComponent<ScoreUIManager>();
-        particle = GameObject.FindGameObjectWithTag("Player").GetComponent<ParticleColorManager>();
     }
 
 

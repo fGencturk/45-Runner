@@ -28,7 +28,7 @@ public class LevelGenerator : MonoBehaviour
         xLimit = screenX * 0.6f;
         screenY = worldLimit.y;
 
-        level = Player.data.maxLevel;
+        level = DataManager.data.maxLevel;
         GameManager.gameSpeed = speedCurve.Evaluate(Time.time / 60f);
         GenerateLevel();
 
@@ -37,7 +37,7 @@ public class LevelGenerator : MonoBehaviour
     public void NextLevel()
     {
         level++;
-        Player.data.maxLevel++;
+        DataManager.data.maxLevel++;
         GenerateLevel();
     }
 

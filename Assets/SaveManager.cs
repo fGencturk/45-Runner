@@ -38,6 +38,8 @@ public class PlayerData
     public int gold;
     public int maxScore;
     public int maxLevel;
+    public int selectedCharacter = 0;
+    public LinkedList<int> ownedCharacters = new LinkedList<int>();
 
     public PlayerData(int gold, int maxScore, int maxLevel)
     {

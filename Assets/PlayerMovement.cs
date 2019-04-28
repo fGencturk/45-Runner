@@ -7,6 +7,15 @@ public class PlayerMovement : MonoBehaviour
     private int moveDirection = 1; //1 for right, -1 for left
     public bool canMove = true;
 
+    [SerializeField] Transform particle;
+    private Quaternion initialRotation;
+
+    private void Start()
+    {
+        initialRotation = particle.transform.rotation;
+        transform.rotation = Quaternion.Euler(0, 0, -45 * moveDirection);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -32,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
     public void ChangeMoveDirection()
     {
         moveDirection *= -1;
+        transform.rotation = Quaternion.Euler(0, 0, -45 * moveDirection);
+        particle.rotation = initialRotation;
     }
 
 }

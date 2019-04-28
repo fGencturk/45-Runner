@@ -10,8 +10,8 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        gold.text = "x" + Player.data.gold;
-        level.text = "LEVEL " + Player.data.maxLevel;
+        gold.text = "x" + DataManager.data.gold;
+        level.text = "LEVEL " + DataManager.data.maxLevel;
     }
 
     public void PlayEndless()

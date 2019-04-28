@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
-    public static float gameSpeed;
+    public static float gameSpeed = 3;
     [SerializeField] GameObject gameOverUI;
     GameObject obstacleGenerator;
 
@@ -17,9 +17,9 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
-        Player.data.gold += ScoreManager.score;
-        Player.data.maxScore = Mathf.Max(Player.data.maxScore, ScoreManager.score);
-        SaveManager.SavePlayer(Player.data);
+        DataManager.data.gold += ScoreManager.score;
+        DataManager.data.maxScore = Mathf.Max(DataManager.data.maxScore, ScoreManager.score);
+        SaveManager.SavePlayer(DataManager.data);
         StartCoroutine(SlowTime());
     }
 
