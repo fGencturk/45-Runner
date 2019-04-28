@@ -972,6 +972,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelBasedGameGenerator
       objectReference: {fileID: 0}
+    - target: {fileID: 2234314788722683102, guid: a379de43aa226f2478649577121dbbbd,
+        type: 3}
+      propertyPath: m_TagString
+      value: ObstacleGenerator
+      objectReference: {fileID: 0}
     - target: {fileID: 2234314788722683088, guid: a379de43aa226f2478649577121dbbbd,
         type: 3}
       propertyPath: m_LocalPosition.x

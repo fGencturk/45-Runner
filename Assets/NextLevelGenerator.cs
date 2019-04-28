@@ -6,7 +6,7 @@ public class NextLevelGenerator : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        LevelGenerator levelGen = GameObject.FindGameObjectWithTag("LevelGenerator").GetComponent<LevelGenerator>();
+        LevelGenerator levelGen = GameObject.FindGameObjectWithTag("ObstacleGenerator").GetComponent<LevelGenerator>();
         levelGen.NextLevel();
     }
 }

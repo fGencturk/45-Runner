@@ -17,6 +17,8 @@ public class EndlessGameGenerator : MonoBehaviour
     private float lastObstaclePosX = 0;
     private float minDistanceObs,
         maxDistanceObs;
+
+    private float startTime;
         
 
     // Start is called before the first frame update
@@ -27,16 +29,22 @@ public class EndlessGameGenerator : MonoBehaviour
         xLimit = screenX * 0.6f;
         screenY = worldLimit.y;
 
-        GameManager.gameSpeed = speedCurve.Evaluate(Time.time / 60f);
+        Reset();
         Invoke("GenerateObstacle", 1);
     }
 
+    public void Reset()
+    {
+
+        startTime = Time.time;
+        GameManager.gameSpeed = speedCurve.Evaluate((Time.time - startTime) / 60f);
+    }
 
     void GenerateObstacle()
     {
-        minDistanceObs = minDistanceObsCurve.Evaluate(Time.time / 60f);
-        maxDistanceObs = maxDistanceObsCurve.Evaluate(Time.time / 60f);
-        GameManager.gameSpeed = speedCurve.Evaluate(Time.time / 60f);
+        minDistanceObs = minDistanceObsCurve.Evaluate((Time.time - startTime) / 60f);
+        maxDistanceObs = maxDistanceObsCurve.Evaluate((Time.time - startTime) / 60f);
+        GameManager.gameSpeed = speedCurve.Evaluate((Time.time - startTime) / 60f);
 
         float yRandom = Random.Range(minDistanceObs, maxDistanceObs);
         float xRandom;

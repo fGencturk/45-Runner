@@ -8,7 +8,12 @@ public class GameManager : MonoBehaviour
 
     public static float gameSpeed;
     [SerializeField] GameObject gameOverUI;
+    GameObject obstacleGenerator;
 
+    private void Start()
+    {
+        obstacleGenerator = GameObject.FindGameObjectWithTag("ObstacleGenerator");
+    }
 
     public void EndGame()
     {
@@ -41,6 +46,9 @@ public class GameManager : MonoBehaviour
 
     public void LoadThisScene()
     {
+        EndlessGameGenerator gameGen = obstacleGenerator.GetComponent<EndlessGameGenerator>();
+        if (gameGen)
+            gameGen.Reset();
         ScoreManager.Reset();
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
