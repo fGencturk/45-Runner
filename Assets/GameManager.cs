@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadMenu()
     {
+        ScoreManager.Reset();
         Time.timeScale = 1;
         SceneManager.LoadScene("Menu");
     }
